@@ -4,7 +4,7 @@ import re
 
 def parse_version(name):
     # http://stackoverflow.com/questions/458550/standard-way-to-embed-version-into-python-package
-    VERSIONFILE = name + "/_version.py"
+    VERSIONFILE = name + "/version_.py"
     verstrline = open(VERSIONFILE, "rt").read()
     VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
     mo = re.search(VSRE, verstrline, re.M)

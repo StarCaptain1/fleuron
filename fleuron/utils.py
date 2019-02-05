@@ -28,11 +28,11 @@ def blank_margin(img, mw=30, mh=30, absolute=True):
         mh = mh * height
         mw = mw * width
 
-    img[:mh, :] = 0
-    img[height-mh:, :] = 0
+    img[:int(mh), :] = 0
+    img[int(height-mh):, :] = 0
 
-    img[:, :mw] = 0
-    img[:, width-mw:] = 0
+    img[:, :int(mw)] = 0
+    img[:, int(width-mw):] = 0
 
     return img
 

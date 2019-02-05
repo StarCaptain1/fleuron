@@ -9,8 +9,8 @@ import multiprocessing as mp
 import argparse
 from os import path
 import logging
-from utils import *
-import _version
+from .utils import *
+from .version_ import __version__
 import json
 import datetime
 
@@ -30,7 +30,7 @@ def write_result(file_path, contours, img):
 
     ts = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     metadata = {
-        "fleuron_version": _version.__version__,
+        "fleuron_version": __version__,
         "date": ts,
         "source_file": file_path,
         "num_ornaments": len(contours),
@@ -522,6 +522,7 @@ def process_images(dir, ncores=mp.cpu_count(), debug=False):
                                                                  dir,
                                                                  ncores))
     try:
+        mp.set_start_method('spawn')
         pool = mp.Pool(processes=ncores)
         # unfortunately pool.map() does not allow passing (kw)args
         # so workaround by passing tuples
@@ -579,7 +580,7 @@ def main():
     parser.add_argument('-d', '--debug', dest="debug", action="store_true",
                         help="debug mode (disables writing results)", default=False)
     parser.add_argument('-v', '--version', action="version",
-                        version=_version.__version__)
+                        version=__version__)
 
     args = parser.parse_args()
 
@@ -591,7 +592,7 @@ def main():
     else:
         log = setup_logging(data_dir)
 
-    log.info("Fleuron version %s started" % _version.__version__)
+    log.info("Fleuron version %s started" % __version__)
     log.debug("Called with commandline arguments %s" % args)
     log.debug("Running on system %s" % str(os.uname()))
 

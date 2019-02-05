@@ -1,39 +1,58 @@
 Fleuron: Ornament Extractor
 ===========================
 
+NOTE:  this is an updated version of the fleuron code located at:
+<https://github.com/dgorissen/fleuron>.  This update works with MacOSX Mojave
+and uses newer pip repository packages.
+
 Given a directory of TIF images from scanned books Fleuron will extract the
 printers ornaments.
 
 Prerequisites
 ------------
 
-* python 2.7
-* pip
-* opencv 2.4.x
+* python3
+* pip3
 
 Installation
 ------------
 
-Note: the use of a virtualenv is recommended
+Instructions are for venv, though environments such as anaconda should work
+as well.
 
-Clone the repository, navigate to the directory and run:
+Create the virtual environment with:
 
+    python3 -m venv <desired folder name>
+
+Once created, enter the folder and start the environment with:
+
+    source bin/activate
+
+To check that the virtual environment is set up properly, enter:
+
+    type python3
+    type pip3
+
+to verify that the executables are linked to inside the environment, rather 
+than to any default python or pip installations on the system.
+
+Inside the environment, clone the repository, navigate to the directory and run:
 ```python
-$> pip install -r requirements.txt
-$> python setup.py sdist
-$> pip install dist/fleuron-x.x.x.tar.gz
+$> pip3 install -r requirements.txt
+$> python3 setup.py sdist
+$> pip3 install dist/fleuron-x.x.x.tar.gz
 ```
 
 Alternatively if you want to develop/change the code run
 
-`pip install -e .`
+    pip3 install -e .`
 
 If you want to install it just for your local user (not system wide) add the
 --user flag.
 
 To uninstall simply run:
 
-`pip uninstall fleuron`
+`   pip3 uninstall fleuron`
 
 Usage
 -----
@@ -77,3 +96,6 @@ Contact
 -------
 
 Hazel Wilkinson <hw442@cam.ac.uk>
+
+For Mac updates:
+Luke McCrone <luke.r.mccrone@gmail.com>
