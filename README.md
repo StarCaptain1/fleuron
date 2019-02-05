@@ -103,7 +103,7 @@ If you want to install it just for your local user (not system wide) add the
 
 To uninstall simply run:
 
-`   pip3 uninstall fleuron
+    pip3 uninstall fleuron
 
 or in anaconda:
 
