@@ -69,10 +69,10 @@ or in anaconda:
 
 ### anaconda
 
-create a file named `matplotlibrc` in `~/.matplotlib`
-Add the following text:
+Run the following command to allow a dependency, matplotlib, to find the
+framework build:
 
-    backend: TkAgg
+    echo "backend: TkAgg" > ~/.matplotlib/matplotlibrc
 
 ### all
 

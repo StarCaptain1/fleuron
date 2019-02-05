@@ -13,6 +13,7 @@ from .utils import *
 from .version_ import __version__
 import json
 import datetime
+import re
 
 
 def write_result(file_path, contours, img):
@@ -504,23 +505,34 @@ def _proc_img(args):
         log.exception("Processing of " + fn + " failed")
 
 
-def process_images(dir, ncores=mp.cpu_count(), debug=False):
+def process_images(dir_, ncores=mp.cpu_count(), debug=False):
     """
     Process all the images in the given directory. Parallelism controlled by
     ncores.
     """
     log = get_logger()
 
-    if path.isdir(dir):
-        files = sorted(glob.glob(dir + "/*.TIF"))
+    files = []
+    if path.isdir(dir_):
+        filenames = [filename for filename in os.listdir(dir_)
+                              if re.search(r'\.tif$', filename, re.IGNORECASE)]
+        for file_ in filenames:
+            files.append(os.path.join(dir_, file_))
+
     else:
         # actually only a single file was passed
-        files = [dir]
-        ncores = 1
+        if re.search(r'\.tif$', filename, re.IGNORECASE):
+            files.append(dir_)
+            ncores = 1
+
+    if len(files) is 0:
+        raise FileNotFoundError("No valid images found.  Images must have " +\
+                                "tif or TIF extension.")
 
     log.info("Processing %s image(s) from %s with %s core(s)" % (len(files),
-                                                                 dir,
+                                                                 dir_,
                                                                  ncores))
+
     try:
         mp.set_start_method('spawn')
         pool = mp.Pool(processes=ncores)
@@ -596,7 +608,12 @@ def main():
     log.debug("Called with commandline arguments %s" % args)
     log.debug("Running on system %s" % str(os.uname()))
 
-    process_images(data_dir, ncores=args.nprocs, debug=args.debug)
+    try:
+        process_images(data_dir, ncores=args.nprocs, debug=args.debug)
+
+    except FileNotFoundError as e:
+        log.error(str(e))
+        exit(1)
 
 
 if __name__ == "__main__":
