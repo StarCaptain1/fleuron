@@ -11,14 +11,20 @@ printers ornaments.
 Prerequisites
 ------------
 
+NOTE:  if `type python` indicates that python is aliased to python3, and
+`pip --version` indicates that it points to a version 3 build of python, then
+you can omit the '3' at the end of the following commands.  Anaconda does not
+have `pip3`, so as long as pip points to a version 3 build, you're OK.
+
 * python3
 * pip3
 
 Installation
 ------------
 
-Instructions are for venv, though environments such as anaconda should work
-as well.
+Instructions are for venv or anaconda on a Mac OSX system.
+
+### venv
 
 Create the virtual environment with:
 
@@ -28,31 +34,80 @@ Once created, enter the folder and start the environment with:
 
     source bin/activate
 
+### anaconda
+
+Create a folder, enter, and create the environment with:
+
+    conda create -n <desired environment name>  python=3.7.2 anaconda
+
+Activate with:
+
+    conda activate <environment name>
+
+Install the virtual python framework build with:
+
+    conda install python.app
+
+### all
+
 To check that the virtual environment is set up properly, enter:
 
     type python3
-    type pip3
+    type pip3 (or for anaconda, make sure that `type pip` points to a python
+    3 version)
 
 to verify that the executables are linked to inside the environment, rather 
 than to any default python or pip installations on the system.
 
 Inside the environment, clone the repository, navigate to the directory and run:
-```python
-$> pip3 install -r requirements.txt
-$> python3 setup.py sdist
-$> pip3 install dist/fleuron-x.x.x.tar.gz
-```
+
+    pip3 install -r requirements.txt
+
+or in anaconda:
+
+    pip install -r requirements.txt
+
+### anaconda
+
+create a file named `matplotlibrc` in `~/.matplotlib`
+Add the following text:
+
+    backend: TkAgg
+
+### all
+
+Run the following commands:
+
+#### venv
+
+    python3 setup.py sdist 
+    pip3 install dist/fleuron-x.x.x.tar.gz
+
+#### anaconda
+
+    pythonw setup.py sdist
+    pip install dist/fleuron-x.x.x.tar.gz
 
 Alternatively if you want to develop/change the code run
 
-    pip3 install -e .`
+    pip3 install -e .
+
+for venv, or
+
+    pip install -e .
+
+in anaconda.
 
 If you want to install it just for your local user (not system wide) add the
 --user flag.
 
 To uninstall simply run:
 
-`   pip3 uninstall fleuron`
+`   pip3 uninstall fleuron
+
+or in anaconda:
+
+    pip uninstall fleuron
 
 Usage
 -----
