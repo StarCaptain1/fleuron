@@ -133,7 +133,7 @@ as:
 `$>fleuron /path/to/directory/of/TIFF/files`
 
 Note 1: the path to the directory for your TIF files should not include any individual file names. 
-Fleuron should process all TIFFs in the directory on its own. If you include an individual TIF file name and extension, 
+Fleuron should process all TIFs in the directory on its own. If you include an individual TIF file name and extension, 
 you will be returned an error.
 
 Note 2: any extracted ornaments will be created and saved in the same directory.
@@ -141,11 +141,11 @@ Note 2: any extracted ornaments will be created and saved in the same directory.
 Note 3: if terminal indicates trouble locating the TIF file(s), you may need to capitalize their file extensions.
 
 Note 4: if you attempt to run Fleuron on image files and are returned an error telling you that python has not 
-been installed as a "framework," open a second terminal window and run the following command from the inital directory:
+been installed as a "framework," open a second terminal window and run the following command from the initial directory:
 
     echo "backend: TkAgg" > ~/.matplotlib/matplotlibrc
     
-Then navigate to ~/.matplotlib and open the file matplotlibrc in a script editor. In matplotlibrc, paste the following text, save and close:
+Then navigate to ~/.matplotlib and open the file 'matplotlibrc' in a script editor. In 'matplotlibrc,' paste the following text, save and close:
 
     backend: TkAgg
     
