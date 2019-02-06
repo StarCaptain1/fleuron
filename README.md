@@ -87,16 +87,20 @@ framework build:
 
 ### 4. All (whether using venv or anaconda)
 
-Run the following commands:
-
-#### venv
+If using venv, enter:
 
     python3 setup.py sdist 
+
+then enter:
+
     pip3 install dist/fleuron-0.9.0.tar.gz
 
-#### anaconda
+If using anaconda, enter:
 
     pythonw setup.py sdist
+    
+then enter:    
+    
     pip install dist/fleuron-0.9.0.tar.gz
 
 Alternatively, if you want to develop/change the code with venv, enter:
@@ -125,7 +129,7 @@ A script called *fleuron* will be installed and should be available on your path
 If it is not on your path you just need to add the python script directory to
 your $PATH environment variable.
 
-Identify the path to the directory where you have stored your TIFF images containing printer's ornaments.
+Identify the path to the directory where you have stored your TIF images containing printer's ornaments.
 
 You can run `fleuron -h` for full usage information, but processing images with Fleuron should be as simple
 as:
