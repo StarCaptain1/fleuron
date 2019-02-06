@@ -129,12 +129,9 @@ A script called *fleuron* will be installed and should be available on your path
 If it is not on your path you just need to add the python script directory to
 your $PATH environment variable.
 
-Identify the path to the directory where you have stored your TIF images containing printer's ornaments.
+Identify the path to the directory where you have stored your TIF images containing printer's ornaments. You can run `fleuron -h` for full usage information, but processing images with Fleuron should be as simple as:
 
-You can run `fleuron -h` for full usage information, but processing images with Fleuron should be as simple
-as:
-
-`$>fleuron /path/to/directory/of/TIFF/files`
+    `$>fleuron /path/to/directory/of/TIFF/files`
 
 Note 1: the path to the directory for your TIF files should not include any individual file names. 
 Fleuron should process all TIFs in the directory on its own. If you include an individual TIF file name and extension, 
