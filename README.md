@@ -1,14 +1,14 @@
 Fleuron: Ornament Extractor
 ===========================
 
+Given a directory of TIF images from scanned books Fleuron will extract the
+printers ornaments.
+
 NOTE:  this is an updated version of the fleuron code located at:
 <https://github.com/lrm25/fleuron>.  The original was written for Windows, but this update 
 works with MacOSX Mojave. It uses newer pip repository packages and is supplied with an 
 extended README to accomodate those who are most likely to use this program: scholars of 
 book history who may be less dextrous with python and/or navigating terminal.
-
-Given a directory of TIF images from scanned books Fleuron will extract the
-printers ornaments.
 
 Prerequisites
 ------------
@@ -70,7 +70,7 @@ From inside the environment (the directory you are currently in), clone the Fleu
 
 For assistance with cloning, see: <https://help.github.com/articles/cloning-a-repository>
 
-Navigate to the "fleuron" directory within the virtual environment you created [cd <fleuron>]
+### 3. Navigate to the "fleuron" directory within the virtual environment you created [cd <fleuron>]
 
 If using venv, enter:
 
@@ -80,12 +80,12 @@ If using anaconda, enter:
 
     pip install -r requirements.txt
 
-Also if using anaconda, run the following command to allow a dependency, matplotlib, to find the
+Then, if using anaconda, run the following command to allow a dependency, matplotlib, to find the
 framework build:
 
     echo "backend: TkAgg" > ~/.matplotlib/matplotlibrc
 
-### 3. All (whether using venv or anaconda)
+### 4. All (whether using venv or anaconda)
 
 Run the following commands:
 
@@ -110,7 +110,7 @@ Which for anaconda would be:
 If you want to install it just for your local user (not system wide) add the
 --user flag.
 
-To uninstall in venv, simply run:
+To uninstall in venv, run:
 
     pip3 uninstall fleuron
 
@@ -141,7 +141,7 @@ Note 2: any extracted ornaments will be created and saved in the same directory.
 Note 3: if terminal indicates trouble locating the TIF file(s), you may need to capitalize their file extensions.
 
 Note 4: if you attempt to run Fleuron on image files and are returned an error telling you that python has not 
-been installed as a "framework," open a second, fresh terminal window and run the following command:
+been installed as a "framework," open a second terminal window and run the following command from the inital directory:
 
     echo "backend: TkAgg" > ~/.matplotlib/matplotlibrc
     
